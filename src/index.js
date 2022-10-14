@@ -14,7 +14,7 @@ const countryInfo = document.querySelector('.country-info');
 
 inputSearch.addEventListener('input', debounce(onSearchInput, DEBOUNCE_DELAY));
 Notify.init({
-    position: "left-top"
+    position: "center-top"
 })
 function onSearchInput(e) {
     clear()
@@ -34,10 +34,9 @@ function onSearchInput(e) {
             if (data.length === 1) {
                 countryInfo.insertAdjacentHTML('beforeend', markupItem(data))
             }
-            if (data.length > 2 && data.length < 10) {
+            if (data.length >= 2 && data.length <=10) {
                 return countryList.insertAdjacentHTML('beforeend', markupList(data))
             }
-
         })
         .catch(err => Notify.failure("Oops, there is no country with that name"));
 }
